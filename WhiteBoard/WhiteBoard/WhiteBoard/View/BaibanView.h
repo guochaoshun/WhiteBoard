@@ -12,9 +12,7 @@
 
 @interface BaibanView : UIView
 
-// 是否需要把每个笔画上传上去到服务器 , 签到只需要上传图片,不需要上传笔迹, 其他的需要上传笔迹
-@property(nonatomic,assign) BOOL needUpdateLabel ;
-
+// 当前正在使用的BezierPath
 @property (nonatomic,strong) BezierPath  *bezierPath;
 // 存的全是 BezierPath  *bezierPath
 @property (nonatomic,strong) NSMutableArray  *beziPathArrM;
