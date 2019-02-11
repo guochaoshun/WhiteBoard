@@ -47,8 +47,6 @@
     if(self.beziPathArrM.count>0){
         
         BezierPath * path = self.beziPathArrM.lastObject;
-      
-        
         [path.layer removeFromSuperlayer];
         [self.beziPathArrM removeLastObject];
     }
@@ -110,7 +108,7 @@
     [self.bezierPath addLineToPoint:currentPoint];
   
 
-    // 小于4个点就画不出来了,用最原始的方法
+    // 小于4个点,用3次贝塞尔曲线就画不出来了,用最原始的方法
     if (self.bezierPath.pointsArray.count <= 4) {
         CGPoint firstPoint = [self.bezierPath.pointsArray.firstObject CGPointValue] ;
         [self.bezierPath moveToPoint:firstPoint];
@@ -128,10 +126,6 @@
    
 }
 
-
-
-
-#pragma mark - 选色代理
 
 - (CAShapeLayer *) setUpLayerFromBezierPath:(BezierPath *)path {
     CAShapeLayer * slayer = [CAShapeLayer layer];
