@@ -15,7 +15,6 @@
 @interface ViewController ()
 
 @property (nonatomic,strong) BaibanView * baibanView ;
-@property (weak, nonatomic) IBOutlet UIView *toolView;
 
 @end
 
