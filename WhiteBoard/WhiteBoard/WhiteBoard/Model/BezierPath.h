@@ -11,8 +11,6 @@
 @interface BezierPath : UIBezierPath
 //画笔的颜色
 @property (nonatomic,copy) UIColor *lineColor;
-//是否是橡皮擦
-@property (nonatomic,assign) BOOL isErase;
 
 // 路径上点的集合数组
 @property(nonatomic,strong) NSMutableArray * pointsArray ;

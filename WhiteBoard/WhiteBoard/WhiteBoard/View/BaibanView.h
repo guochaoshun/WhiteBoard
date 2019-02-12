@@ -21,7 +21,7 @@
 @property (nonatomic,copy) UIColor *lineColor;
 // 画笔的粗细
 @property (nonatomic,assign) CGFloat brushLineWidth;
-// 是否是橡皮擦,说下橡皮擦的原理,就是把lineColor的颜色改成和背景色一致,然后绘制曲线.后来需求把这个砍掉了,因为不如清除上一步好用
+// 是否是橡皮擦,说下橡皮擦的原理,就是把lineColor的颜色改成和背景色一致,然后绘制曲线.(后来需求把这个砍掉了,因为不如清除上一步好用,用起来很麻烦,还有就是Android同步不太好处理)
 @property (nonatomic,assign) BOOL isErase;
 
 /**

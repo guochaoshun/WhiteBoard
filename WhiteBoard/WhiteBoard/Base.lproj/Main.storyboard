@@ -83,12 +83,28 @@
                                     <constraint firstItem="dwq-sv-cXn" firstAttribute="centerY" secondItem="sj9-1l-rhY" secondAttribute="centerY" id="mVa-Jl-RWp"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dth-Y1-yPG">
+                                <rect key="frame" x="9" y="88" width="80" height="34"/>
+                                <color key="backgroundColor" red="1" green="0.81960784310000001" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="DIh-4B-9zk"/>
+                                </constraints>
+                                <state key="normal" title="橡皮擦">
+                                    <color key="titleColor" red="0.99607843139999996" green="0.30588235289999999" blue="0.30588235289999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <state key="selected" title="使用中..."/>
+                                <connections>
+                                    <action selector="erroser:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6y5-6q-KCK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="sj9-1l-rhY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="QsI-cE-cZO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sj9-1l-rhY" secondAttribute="trailing" id="VcC-Eu-4KK"/>
                             <constraint firstItem="sj9-1l-rhY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ZXW-dR-sVg"/>
+                            <constraint firstItem="dth-Y1-yPG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="9" id="bjx-HW-Ar8"/>
+                            <constraint firstItem="dth-Y1-yPG" firstAttribute="top" secondItem="sj9-1l-rhY" secondAttribute="bottom" constant="8" id="lwZ-5U-WG4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

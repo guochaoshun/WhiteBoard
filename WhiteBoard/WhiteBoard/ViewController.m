@@ -57,4 +57,16 @@
     [self.baibanView clearAllPath];
 }
 
+/// 橡皮擦
+- (IBAction)erroser:(UIButton *)button {
+    button.selected = !button.isSelected;
+    self.baibanView.isErase = button.selected ;
+}
+
+
+
+
+
+
+
 @end

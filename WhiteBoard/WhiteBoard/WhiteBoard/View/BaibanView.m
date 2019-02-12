@@ -71,8 +71,10 @@
     CGPoint currentPoint = [touch locationInView:self];
     self.bezierPath = [[BezierPath alloc] init];
     self.bezierPath.lineColor = self.lineColor;
+    if (self.isErase) {
+        self.bezierPath.lineColor = [UIColor whiteColor];
+    }
     self.bezierPath.lineWidth = self.brushLineWidth ;
-    self.bezierPath.isErase = self.isErase;
     [self.bezierPath moveToPoint:currentPoint];
     self.bezierPath.lineCapStyle = kCGLineCapRound ;
     self.bezierPath.lineJoinStyle = kCGLineJoinRound ;
