@@ -110,6 +110,7 @@
             self.bezierPath.lineColor = [UIColor whiteColor];
         } else {
             // 橡皮擦方案2 : 如果有背景图片,需要把lineColor的颜色设置成背景图片的颜色
+            // https://blog.csdn.net/sonysuqin/article/details/81092574?utm_source=blogxgwz9
             self.bezierPath.lineColor = [UIColor colorWithPatternImage:self.stretchedImage];
         }
         
