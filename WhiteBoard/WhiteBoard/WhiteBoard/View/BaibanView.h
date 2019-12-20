@@ -17,6 +17,8 @@
 // 存的全是 BezierPath  *bezierPath
 @property (nonatomic,strong) NSMutableArray  *beziPathArrM;
 
+@property (nonatomic,strong) UIImage *backgroundImage;
+
 //画笔的颜色
 @property (nonatomic,copy) UIColor *lineColor;
 // 画笔的粗细

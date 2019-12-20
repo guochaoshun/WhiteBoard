@@ -20,6 +20,7 @@
     CGPoint pts [5] ; // 保存最近的画的5个点 , 用来计算3次贝塞尔曲线
     int  ctr  ; // 一个标志位, 记录已经存在的点
 }
+@property (nonatomic,strong) UIImage * stretchedImage ;
 
 
 @end
@@ -39,6 +40,35 @@
     return self;
 }
 
+- (void)setBackgroundImage:(UIImage *)backgroundImage {
+    _backgroundImage = backgroundImage;
+    
+    //将变换后的图片设置为背景色
+    [self setBackgroundColor:[[UIColor alloc] initWithPatternImage:self.stretchedImage]];
+    //View的图层设置为原始图片，这里会自动翻转，经过这步后图层显示和橡皮背景都设置为正确的图片。
+    self.layer.contents = (_Nullable id)_backgroundImage.CGImage;
+    
+}
+// 先使图片翻转,
+- (UIImage *)stretchedImage {
+    
+    if (_stretchedImage==nil) {
+        //创建一个新的Context
+        UIGraphicsBeginImageContext(self.frame.size);
+        //获得当前Context
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        //CTM变换，调整坐标系，*重要*，否则橡皮擦使用的背景图片会发生翻转。
+        CGContextScaleCTM(context, 1, -1);
+        CGContextTranslateCTM(context, 0, -self.bounds.size.height);
+        //图片适配到当前View的矩形区域，会有拉伸
+        [_backgroundImage drawInRect:self.bounds];
+        //获取拉伸并翻转后的图片
+        _stretchedImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+
+    }
+    return _stretchedImage;
+}
 
 
 #pragma mark - 操作栏方法
@@ -71,10 +101,20 @@
     CGPoint currentPoint = [touch locationInView:self];
     self.bezierPath = [[BezierPath alloc] init];
     self.bezierPath.lineColor = self.lineColor;
-    if (self.isErase) {
-        self.bezierPath.lineColor = [UIColor whiteColor];
-    }
     self.bezierPath.lineWidth = self.brushLineWidth ;
+
+    if (self.isErase) {
+        
+        if (self.backgroundImage == nil) {
+            // 橡皮擦方案1 : 如果没有背景图片,直接设置橡皮擦的颜色为背景色即可
+            self.bezierPath.lineColor = [UIColor whiteColor];
+        } else {
+            // 橡皮擦方案2 : 如果有背景图片,需要把lineColor的颜色设置成背景图片的颜色
+            self.bezierPath.lineColor = [UIColor colorWithPatternImage:self.stretchedImage];
+        }
+        
+        self.bezierPath.lineWidth = 15 ;
+    }
     [self.bezierPath moveToPoint:currentPoint];
     self.bezierPath.lineCapStyle = kCGLineCapRound ;
     self.bezierPath.lineJoinStyle = kCGLineJoinRound ;

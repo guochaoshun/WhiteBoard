@@ -22,12 +22,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-   
+    
+    
     // 最简单的白板,只是原理,原项目的选择颜色和线条粗细的工具栏只是简单的写了写
     self.baibanView = [[BaibanView alloc] initWithFrame:self.view.bounds];
-    [self.view addSubview:self.baibanView] ;
-    [self.view sendSubviewToBack:self.baibanView];
+    [self.view insertSubview:self.baibanView atIndex:0];
+    
+    // 是否使用图片,图片的填充方式只有填充满一种,需要自己根据图片大小设置白板的frame
+    self.baibanView.backgroundImage = [UIImage imageNamed:@"bgImage"];
+    
+    
     
 }
 
