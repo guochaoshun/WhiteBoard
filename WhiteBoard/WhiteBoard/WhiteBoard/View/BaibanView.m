@@ -43,8 +43,8 @@
 - (void)setBackgroundImage:(UIImage *)backgroundImage {
     _backgroundImage = backgroundImage;
     
-    //将变换后的图片设置为背景色
-    [self setBackgroundColor:[[UIColor alloc] initWithPatternImage:self.stretchedImage]];
+    //将变换后的图片设置为背景色,如果背景图是透明色的话,需要再处理下,把透明色处理成白色
+//    [self setBackgroundColor:[[UIColor alloc] initWithPatternImage:self.stretchedImage]];
     //View的图层设置为原始图片，这里会自动翻转，经过这步后图层显示和橡皮背景都设置为正确的图片。
     self.layer.contents = (_Nullable id)_backgroundImage.CGImage;
     
@@ -110,6 +110,7 @@
             self.bezierPath.lineColor = [UIColor whiteColor];
         } else {
             // 橡皮擦方案2 : 如果有背景图片,需要把lineColor的颜色设置成背景图片的颜色
+            // 原理大致是:backgroundImage正常显示,然后是橡皮擦的时候,把背景图片上的颜色覆盖上去,给用户的感觉就是擦掉了笔迹
             // https://blog.csdn.net/sonysuqin/article/details/81092574?utm_source=blogxgwz9
             self.bezierPath.lineColor = [UIColor colorWithPatternImage:self.stretchedImage];
         }
