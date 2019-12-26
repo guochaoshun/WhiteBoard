@@ -29,8 +29,9 @@
     [self.view insertSubview:self.baibanView atIndex:0];
     
     // 是否使用图片,图片的填充方式只有填充满一种,需要自己根据图片大小设置白板的frame
-    self.baibanView.backgroundImage = [UIImage imageNamed:@"bgImage"];
-    
+//    self.baibanView.backgroundImage = [UIImage imageNamed:@"bgImage"];
+    self.baibanView.backgroundImage = [UIImage imageNamed:@"121475-长号手"];
+
     
     
 }

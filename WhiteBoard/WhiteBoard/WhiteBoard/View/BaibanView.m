@@ -53,8 +53,8 @@
 - (UIImage *)stretchedImage {
     
     if (_stretchedImage==nil) {
-        //创建一个新的Context
-        UIGraphicsBeginImageContext(self.frame.size);
+        //创建一个新的Context,使用这个擦除的时候不会变糊
+        UIGraphicsBeginImageContextWithOptions(self.frame.size,YES,[[UIScreen mainScreen] scale]);
         //获得当前Context
         CGContextRef context = UIGraphicsGetCurrentContext();
         //CTM变换，调整坐标系，*重要*，否则橡皮擦使用的背景图片会发生翻转。
